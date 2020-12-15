@@ -13,6 +13,7 @@ Main dependencies:
 Main project in new folder
 ```
 composer create-project alangiacomin/laravel-react-base-app <folder>
+php artisan migrate:fresh --seed
 ```
 
 Admin user
