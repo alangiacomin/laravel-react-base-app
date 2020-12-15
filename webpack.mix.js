@@ -13,16 +13,16 @@ const mix = require('laravel-mix');
 
 mix.setResourceRoot(process.env.APP_BASENAME);
 
-mix.copyDirectory("resources/images", "public/images");
+mix.copyDirectory('resources/images', 'public/images');
 
-mix.react("resources/js/app.js", "public/js");
+mix.react('resources/js/index.jsx', 'public/js/app.js');
 
-mix.sass("resources/sass/app.scss", "public/css");
+mix.sass('resources/sass/app.scss', 'public/css');
 
 mix.extract();
 
 if (mix.config.production) {
-    mix.version();
+  mix.version();
 }
 
-//mix.dump();
+// mix.dump();

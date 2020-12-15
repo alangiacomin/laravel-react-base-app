@@ -3,7 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 //import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
-import LayoutOneColumn from "../components/LayoutOneColumn";
+import Layout from "../components/Layout";
+import { LayoutType } from "../components/Layout/Layout";
 import { userLogout } from "./UserActions";
 
 export default withRouter(
@@ -33,13 +34,13 @@ export default withRouter(
                 const { user } = this.props;
                 if (user.id > 0) {
                     return (
-                        <LayoutOneColumn>
+                        <Layout type={LayoutType.OneColumn}>
                             <Row className="my-5">
                                 <Col lg={6} md={8} className="mx-auto">
                                     <h3>Logout in corso...</h3>
                                 </Col>
                             </Row>
-                        </LayoutOneColumn>
+                        </Layout>
                     );
                 } else {
                     return <Redirect to={"/"} />;
