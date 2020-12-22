@@ -1,54 +1,67 @@
 import { absoluteUrl } from '../common/utility';
 
-const setRoute = (data) => ({
-  exact: true,
-  isActive: (match) => match !== null,
-  path: data.to,
-  ...data,
+const addRoute = (data) => {
+  const route = {
+    exact: true,
+    isActive: (match) => match !== null,
+    path: data.to,
+    ...data,
+  };
+  window._.forEach(data.subRoutes, (v, k) => {
+    route[k] = v;
+  });
+  delete route.subRoutes;
+  routes[data.id] = route;
+};
+
+const routes = {};
+
+addRoute({
+  id: 'home',
+  title: 'Home',
+  to: '/',
+  // isActive: (match, location) => {
+  //    return true;
+  //    //return (
+  //    //    match !== null ||
+  //    //    location.pathname.startsWith("/xxx") ||
+  //    //    location.pathname.startsWith("/yyy")
+  //    //);
+  // }
 });
 
-const routes = Object.fromEntries(
-  Object.entries({
-    home: setRoute({
-      title: 'Home',
-      to: '/',
-      exact: true,
-    // isActive: (match, location) => {
-    //    return true;
-    //    //return (
-    //    //    match !== null ||
-    //    //    location.pathname.startsWith("/xxx") ||
-    //    //    location.pathname.startsWith("/yyy")
-    //    //);
-    // }
-    }),
-    admin: setRoute({
-      title: 'Admin',
-      // to: "/admin",
-      perm: 'browse_admin',
-      to: absoluteUrl('/admin'),
-    }),
-    login: setRoute({
-      title: 'Login',
-      to: '/login',
-      perm: 'special_guests_only',
-    }),
-    logout: setRoute({
-      title: 'Logout',
-      to: '/logout',
-      perm: 'special_users_only',
-    }),
-    pagina: setRoute({
-      title: 'Pagina',
-      to: '/pagina',
-    }),
-    nonesiste: setRoute({
-      title: 'Non esiste',
-      to: '/nonesiste',
-    }),
-  })
-    // con la "map" aggiungo per ogni elemento anche il suo id
-    .map(([key, val]) => [key, Object.fromEntries([...Object.entries(val), ['id', key]])]),
-);
+addRoute({
+  id: 'admin',
+  title: 'Admin',
+  perm: 'browse_admin',
+  to: absoluteUrl('/admin'),
+});
+
+addRoute({
+  id: 'login',
+  title: 'Login',
+  to: '/login',
+  perm: 'special_guests_only',
+});
+
+addRoute({
+  id: 'logout',
+  title: 'Logout',
+  to: '/logout',
+  perm: 'special_users_only',
+});
+
+addRoute({
+  id: 'pagina',
+  title: 'Pagina',
+  to: '/pagina',
+  exact: false,
+});
+
+addRoute({
+  id: 'nonesiste',
+  title: 'Non esiste',
+  to: '/nonesiste',
+});
 
 export default routes;

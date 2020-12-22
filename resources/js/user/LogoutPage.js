@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 //import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
+import { setDocumentTitle } from "../common/utility";
 import Layout from "../components/Layout";
 import { LayoutType } from "../components/Layout/Layout";
 import { userLogout } from "./UserActions";
@@ -18,6 +19,7 @@ export default withRouter(
         class LogoutPage extends Component {
             constructor(props) {
                 super(props);
+                setDocumentTitle();
             }
 
             componentDidMount() {

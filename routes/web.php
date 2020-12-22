@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
-use App\Http\Controllers\Web\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,12 @@ use App\Http\Controllers\Web\HomeController;
 */
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+  Voyager::routes();
 });
 
+Route::get('/user', [UserController::class, 'user']);
+Route::post('/login', [UserController::class, 'postLogin']);
+Route::post('/logout', [UserController::class, 'logout']);
+
 Route::get('/{any}', [HomeController::class, 'index'])
-    ->where('any', '.*')->name('home');
+  ->where('any', '.*')->name('home');

@@ -8,7 +8,7 @@ import ProtectedRoute from '../ProtectedRoute';
 import ErrorBoundary from '../ErrorBoundary';
 import { history } from '../../configureStore';
 import routesWithComponents from '../../config/routesWithComponents';
-import Error from '../../pagine/Error';
+import { renderNotFound } from '../../common/renderHelpers';
 
 const App = (props) => {
   const { store } = props;
@@ -22,7 +22,7 @@ const App = (props) => {
             .map(([key, route]) => (route.component ? <ProtectedRoute key={key} {...route} /> : null))}
           <ErrorBoundary>
             <Route path="*">
-              <Error errorCode={404} />
+              {renderNotFound()}
             </Route>
           </ErrorBoundary>
         </Switch>
@@ -36,18 +36,4 @@ App.propTypes = {
   store: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = () => ({});
-
-// const mapDispatchToProps = (dispatch) => ({
-//   aggiornaComuneNascita: (comune = {}) => dispatch(
-//     setDatiQuadro({
-//       RichiedenteDatiAnagraficiProvinciaDiNascita: comune.CodiceProvincia,
-//       RichiedenteDatiAnagraficiStatoDiNascita: comune.DescrizioneStato,
-//       RichiedenteDatiAnagraficiCodiceComuneDiNascita: comune.CodiceComune,
-//       RichiedenteDatiAnagraficiComuneDiNascita: comune.Descrizione,
-//     }),
-//   ),
-// });
-
 export default App;
-// export default connect(mapStateToProps)(App);

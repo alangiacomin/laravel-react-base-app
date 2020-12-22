@@ -20,13 +20,11 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::prefix('v1')->group(function () {
-    Route::get('/elements', [ElementController::class, 'list'])->name('route.elements');
-    Route::get('/user', [UserController::class, 'user']);
-    Route::post('/logout', [UserController::class, 'logout']);
-});
+// Route::prefix('v1')->group(function () {
+//     Route::get('/elements', [ElementController::class, 'list'])->name('route.elements');
+// });
 
 
-Route::get('/{any}', function () {
-    abort(404);
-})->where('any', '.*');
+// Route::get('/{any}', function () {
+//     abort(404);
+// })->where('any', '.*');

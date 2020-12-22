@@ -25,14 +25,14 @@ export const reducer = createReducer(defaults, {
 export function userLogin(email, password, options) {
   return (dispatch) => {
     makeRequest({
-      url: '/admin/login',
+      url: '/login',
       method: 'post',
       data: {
         email: email ?? 'missing@user.com',
         password: password || 'missingpassword',
       },
       onSuccess: (data) => {
-        dispatch(getUserProfile());
+        dispatch(setUserProfile(data));
       },
       onFailure: (data) => {
         options.onFailure && options.onFailure(data);
@@ -44,7 +44,7 @@ export function userLogin(email, password, options) {
 export function userLogout() {
   return (dispatch) => {
     makeRequest({
-      url: '/api/v1/logout',
+      url: '/logout',
       method: 'post',
       onSuccess: (data) => {
         dispatch(userActions.loggedOut(data));
@@ -56,7 +56,7 @@ export function userLogout() {
 export function getUserProfile() {
   return (dispatch) => {
     makeRequest({
-      url: '/api/v1/user',
+      url: '/user',
       onSuccess: (data) => {
         dispatch(setUserProfile(data));
       },

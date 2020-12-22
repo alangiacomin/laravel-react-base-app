@@ -61,7 +61,7 @@ function LoginComponent(props) {
 }
 
 LoginComponent.propTypes = {
-  errorMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   initialValues: PropTypes.shape({
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
