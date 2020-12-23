@@ -21,6 +21,10 @@ const routesWithComponents = {
     ...routes.pagina,
     component: Pagina,
   },
+  editor: {
+    ...routes.editor,
+    component: Home,
+  },
 };
 
 export default routesWithComponents;

@@ -3,6 +3,7 @@ import routes from './routes';
 const navbarLinks = {
   topLeft: [
     routes.pagina,
+    routes.editor,
     routes.nonesiste,
   ],
   topRight: [

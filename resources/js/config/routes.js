@@ -1,15 +1,23 @@
 import { absoluteUrl } from '../common/utility';
 
 const addRoute = (data) => {
-  const route = {
+  const defaultRoute = {
     exact: true,
     isActive: (match) => match !== null,
     path: data.to,
-    ...data,
   };
   window._.forEach(data.subRoutes, (v, k) => {
-    route[k] = v;
+    routes[data.id + '_' + k] = {
+      ...defaultRoute,
+      ...v,
+      to: data.to + v.to,
+      path: data.to + v.to,
+    };
   });
+  const route = {
+    ...defaultRoute,
+    ...data,
+  };
   delete route.subRoutes;
   routes[data.id] = route;
 };
@@ -56,12 +64,25 @@ addRoute({
   title: 'Pagina',
   to: '/pagina',
   exact: false,
+  subRoutes: {
+    edit: {
+      to: '/edit',
+      perm: 'edit_page_data',
+    },
+  },
 });
 
 addRoute({
   id: 'nonesiste',
   title: 'Non esiste',
   to: '/nonesiste',
+});
+
+addRoute({
+  id: 'editor',
+  title: 'Editor',
+  to: '/editor',
+  perm: 'edit_page_data',
 });
 
 export default routes;

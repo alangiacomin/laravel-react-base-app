@@ -1,35 +1,28 @@
-import React from 'react';
+import {
+  find, isArray,
+} from 'lodash';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
-import { useLocation, useRouteMatch } from 'react-router-dom';
-import { hasPermission, setDocumentTitle } from '../../common/utility';
-import PaginaComponent from './PaginaComponent';
+import { useLocation } from 'react-router-dom';
 import { redirectLogin, renderUnauthorized } from '../../common/renderHelpers';
+import { hasPermission, setDocumentTitle } from '../../common/utility';
+import routes from '../../config/routes';
+import PaginaComponent from './PaginaComponent';
 
-const pageActions = {
-  edit: {
-    id: 'edit',
-    perm: 'edit_page_data',
-  },
-};
-
-const getRouteAction = (routeMatch) => {
-  if (!routeMatch || !routeMatch.params) return '';
-  return routeMatch.params.action ?? '';
-};
-
-const actionAllowed = (user, pageAction, routeAction) => {
-  if (pageAction.id !== routeAction) {
-    return true;
+const isRouteAllowed = (user, location, protectedRoutes) => {
+  const protectedRoutesArray = isArray(protectedRoutes) ? protectedRoutes : [protectedRoutes];
+  const protRoute = find(protectedRoutesArray, (r) => r.path === location.pathname);
+  if (protRoute) {
+    return hasPermission(user, protRoute.perm);
   }
-  return hasPermission(user, pageAction.perm);
+  return true;
 };
 
 const Pagina = (props) => {
   const { user } = props;
   const location = useLocation();
-  const action = getRouteAction(useRouteMatch({ path: '/:route/:action/' }));
-  if (!actionAllowed(user, pageActions.edit, action)) {
+  if (!isRouteAllowed(user, location, [routes.pagina_edit])) {
     return user.id ? renderUnauthorized() : redirectLogin(location.pathname);
   }
   setDocumentTitle('Pagina');
@@ -41,8 +34,8 @@ const Pagina = (props) => {
       sottotitolo={sottotitolo}
       titolo={titolo}
       contenuti={contenuti}
-      canEdit={hasPermission(user, pageActions.edit.perm)}
-      editMode={pageActions.edit.id === action}
+      canEdit={hasPermission(user, routes.pagina_edit.perm)}
+      editMode={routes.pagina_edit.path === location.pathname}
     />
   );
 };
