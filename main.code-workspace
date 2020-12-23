@@ -17,5 +17,6 @@
         ],
         "javascript.updateImportsOnFileMove.enabled": "always",
         "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+        "workbench.panel.defaultLocation": "right",
     }
 }
