@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.setResourceRoot(process.env.APP_BASENAME);
 
 mix.copyDirectory('resources/images', 'public/images');
+mix.copy('resources/images/favicon.ico', 'public');
 
 mix.react('resources/js/index.jsx', 'public/js/app.js');
 
