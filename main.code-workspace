@@ -10,12 +10,12 @@
             "source.fixAll.eslint": true,
             "source.organizeImports": true
         },
-        "eslint.validate": ["javascript"],
         "editor.tabSize": 2,
         "editor.rulers": [
           80,
           120
         ],
-        "javascript.updateImportsOnFileMove.enabled": "always"
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
     }
 }
