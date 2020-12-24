@@ -1,8 +1,7 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
-import { withRouter } from 'react-router-dom';
-import LayoutTopFooter from './LayoutTopFooter';
+import React from 'react';
 import LayoutOneColumn from './LayoutOneColumn';
+import LayoutTopFooter from './LayoutTopFooter';
 
 export const LayoutType = {
   TopFooter: 'TopFooter',
@@ -23,18 +22,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// const mapStateToProps = () => ({
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   aggiornaComuneNascita: (comune = {}) => dispatch(
-//     setDatiQuadro({
-//       RichiedenteDatiAnagraficiProvinciaDiNascita: comune.CodiceProvincia,
-//       RichiedenteDatiAnagraficiStatoDiNascita: comune.DescrizioneStato,
-//       RichiedenteDatiAnagraficiCodiceComuneDiNascita: comune.CodiceComune,
-//       RichiedenteDatiAnagraficiComuneDiNascita: comune.Descrizione,
-//     }),
-//   ),
-// });
-
-export default withRouter(Layout);
+export default Layout;
