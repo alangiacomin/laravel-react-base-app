@@ -32,6 +32,7 @@ function LoginComponent(props) {
                       type="email"
                       label="Your email"
                       placeholder="Email"
+                      autoComplete="Email"
                       autoFocus
                     />
                     <FormikTextField
@@ -39,6 +40,7 @@ function LoginComponent(props) {
                       type="password"
                       label="Your password"
                       placeholder="******"
+                      autoComplete="current-password"
                     />
                     <Button
                       type="submit"
