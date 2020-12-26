@@ -1,7 +1,8 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import LanguageSelector, { LanguageSelectorType } from '../LanguageSelector/LanguageSelector';
 import TopNavbarItem from './TopNavbarItem';
 
 const TopNavbarComponent = (props) => {
@@ -18,6 +19,9 @@ const TopNavbarComponent = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {linksLeft.map((link, i) => <TopNavbarItem key={link.id} route={link} />)}
+          </Nav>
+          <Nav className="ml-auto">
+            <LanguageSelector type={LanguageSelectorType.Buttons} />
           </Nav>
           <Nav className="ml-auto">
             {linksRight.map((link, i) => <TopNavbarItem key={link.id} route={link} />)}

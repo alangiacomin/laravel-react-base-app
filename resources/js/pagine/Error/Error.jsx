@@ -1,5 +1,7 @@
+import { upperFirst } from 'lodash';
 import { PropTypes } from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { setDocumentTitle } from '../../common/utility';
 import ErrorComponent from './ErrorComponent';
@@ -7,17 +9,23 @@ import ErrorComponent from './ErrorComponent';
 const Error = (props) => {
   setDocumentTitle('Error');
   const { errorCode } = props;
+  const { t } = useTranslation();
   const getDescription = (code) => {
     switch (code) {
       case 403:
-        return 'Non Autorizzato';
+        return upperFirst(t('unauthorized'));
       case 404:
-        return 'Pagina non trovata';
+        return upperFirst(t('page_not_found'));
       default:
-        return 'Errore non definito';
+        return upperFirst(t('undefined_error'));
     }
   };
-  return (<ErrorComponent descError={getDescription(errorCode)} />);
+  return (
+    <ErrorComponent
+      title={upperFirst(t('error'))}
+      descError={getDescription(errorCode)}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({});

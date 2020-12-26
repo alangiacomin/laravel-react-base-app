@@ -1,16 +1,19 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import TopNavbarItemComponent from './TopNavbarItemComponent';
 import { hasPermission } from '../../../common/utility';
+import TopNavbarItemComponent from './TopNavbarItemComponent';
 
 const TopNavbarItem = (props) => {
   const { user, route } = props;
+  const { t } = useTranslation('routes');
 
   if (!hasPermission(user, route.perm)) {
     return null;
   }
-  return (<TopNavbarItemComponent {...route} />);
+  const title = t(route.title);
+  return (<TopNavbarItemComponent {...route} title={title} />);
 };
 
 TopNavbarItem.propTypes = {

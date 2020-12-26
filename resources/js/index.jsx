@@ -5,15 +5,17 @@
 // library.add(fab);
 
 // questi sostituiscono il deprecato @babel/polyfill
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
 
-// altri import
-import React from 'react';
+import 'core-js/stable';
+import React, { Suspense } from 'react';
 import { render } from 'react-dom';
-import configureAppStore from './configureStore';
-import { setUserProfile } from './user/UserActions';
+import 'regenerator-runtime/runtime';
 import App from './components/App';
+import configureAppStore from './configureStore';
+import './i18nextConf';
+import { setUserProfile } from './user/UserActions';
 
 window._ = require('lodash');
 window.axios = require('axios');
@@ -24,4 +26,8 @@ const store = configureAppStore();
 
 store.dispatch(setUserProfile(window.user));
 
-render(<App store={store} />, document.getElementById('app'));
+const Loader = () => (
+  <div>loading...</div>
+);
+
+render(<Suspense fallback={<Loader />}><App store={store} /></Suspense>, document.getElementById('app'));

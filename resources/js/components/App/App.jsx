@@ -1,14 +1,14 @@
-import React from 'react';
+import { ConnectedRouter } from 'connected-react-router';
 import { PropTypes } from 'prop-types';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'connected-react-router';
-import ScrollToTop from '../ScrollToTop';
-import ProtectedRoute from '../ProtectedRoute';
-import ErrorBoundary from '../ErrorBoundary';
-import { history } from '../../configureStore';
-import routesWithComponents from '../../config/routesWithComponents';
 import { renderNotFound } from '../../common/renderHelpers';
+import routesWithComponents from '../../config/routesWithComponents';
+import { history } from '../../configureStore';
+import ErrorBoundary from '../ErrorBoundary';
+import ProtectedRoute from '../ProtectedRoute';
+import ScrollToTop from '../ScrollToTop';
 
 const App = (props) => {
   const { store } = props;

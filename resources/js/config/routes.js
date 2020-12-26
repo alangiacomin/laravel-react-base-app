@@ -61,7 +61,7 @@ addRoute({
 
 addRoute({
   id: 'pagina',
-  title: 'Pagina',
+  title: 'page',
   to: '/pagina',
   exact: false,
   subRoutes: {
@@ -74,7 +74,7 @@ addRoute({
 
 addRoute({
   id: 'nonesiste',
-  title: 'Non esiste',
+  title: 'not_exist',
   to: '/nonesiste',
 });
 
