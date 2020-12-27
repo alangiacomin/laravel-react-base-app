@@ -1,8 +1,7 @@
-import _ from 'lodash';
-// import qs from 'qs';
+import { isEmpty, join, trimStart } from 'lodash';
 
 export function absoluteUrl(path) {
-  return process.env.MIX_APP_URL + (path.startsWith('/') ? '' : '/') + path;
+  return process.env.MIX_APP_URL + '/' + trimStart(path, '/');
 }
 
 export function preventPropagation(event, callback) {
@@ -19,13 +18,13 @@ export function setDocumentTitle(text, separator = ' - ') {
 
 export function defineDocumentTitle(text, separator = ' - ') {
   const rootTitle = process.env.MIX_APP_NAME;
-  if (_.isEmpty(text)) {
+  if (isEmpty(text)) {
     return rootTitle;
   }
-  if (_.isEmpty(separator)) {
+  if (isEmpty(separator)) {
     return text;
   }
-  return _.join([rootTitle, text], separator);
+  return join([rootTitle, text], separator);
 }
 
 export function makeRequest(params) {

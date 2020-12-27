@@ -1,3 +1,4 @@
+import { forEach } from 'lodash';
 import { absoluteUrl } from '../common/utility';
 
 const addRoute = (data) => {
@@ -6,7 +7,7 @@ const addRoute = (data) => {
     isActive: (match) => match !== null,
     path: data.to,
   };
-  window._.forEach(data.subRoutes, (v, k) => {
+  forEach(data.subRoutes, (v, k) => {
     routes[data.id + '_' + k] = {
       ...defaultRoute,
       ...v,
