@@ -1,6 +1,8 @@
 import { forEach } from 'lodash';
 import { absoluteUrl } from '../common/utility';
 
+const routes = {};
+
 const addRoute = (data) => {
   const defaultRoute = {
     exact: true,
@@ -22,8 +24,6 @@ const addRoute = (data) => {
   delete route.subRoutes;
   routes[data.id] = route;
 };
-
-const routes = {};
 
 addRoute({
   id: 'home',

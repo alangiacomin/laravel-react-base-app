@@ -1,10 +1,10 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import ErrorBoundary from '../ErrorBoundary';
+import { renderUnauthorized } from '../../common/renderHelpers';
 import { hasPermission } from '../../common/utility';
 import routes from '../../config/routes';
-import { renderUnauthorized } from '../../common/renderHelpers';
+import ErrorBoundary from '../ErrorBoundary';
 
 const ProtectedRouteComponent = (props) => {
   const {
