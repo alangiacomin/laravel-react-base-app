@@ -1,4 +1,4 @@
-import { isEmpty, join, trimStart } from 'lodash';
+import { find, isArray, isEmpty, join, trimStart } from 'lodash';
 
 export function absoluteUrl(path) {
   return process.env.MIX_APP_URL + '/' + trimStart(path, '/');
@@ -96,3 +96,12 @@ export function hasPermission(user, perm) {
   }
   return true;
 }
+
+export const isRouteAllowed = (user, location, protectedRoutes) => {
+  const protectedRoutesArray = isArray(protectedRoutes) ? protectedRoutes : [protectedRoutes];
+  const protRoute = find(protectedRoutesArray, (r) => r.path === location.pathname);
+  if (protRoute) {
+    return hasPermission(user, protRoute.perm);
+  }
+  return true;
+};

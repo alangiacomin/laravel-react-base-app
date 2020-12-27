@@ -1,24 +1,12 @@
-import {
-  find, isArray,
-} from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { redirectLogin, renderUnauthorized } from '../../common/renderHelpers';
-import { hasPermission, setDocumentTitle } from '../../common/utility';
+import { hasPermission, isRouteAllowed, setDocumentTitle } from '../../common/utility';
 import routes from '../../config/routes';
 import PaginaComponent from './PaginaComponent';
-
-const isRouteAllowed = (user, location, protectedRoutes) => {
-  const protectedRoutesArray = isArray(protectedRoutes) ? protectedRoutes : [protectedRoutes];
-  const protRoute = find(protectedRoutesArray, (r) => r.path === location.pathname);
-  if (protRoute) {
-    return hasPermission(user, protRoute.perm);
-  }
-  return true;
-};
 
 const Pagina = (props) => {
   const { user } = props;
