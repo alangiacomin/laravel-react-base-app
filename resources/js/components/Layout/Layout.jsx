@@ -1,3 +1,4 @@
+import { values } from 'lodash';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import LayoutOneColumn from './LayoutOneColumn';
@@ -18,7 +19,7 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
-  type: PropTypes.oneOf(['TopFooter', 'OneColumn']).isRequired,
+  type: PropTypes.oneOf(values(LayoutType)).isRequired,
   children: PropTypes.node.isRequired,
 };
 
