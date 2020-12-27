@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const mix = require('laravel-mix');
 
 /*
@@ -14,8 +15,8 @@ const mix = require('laravel-mix');
 mix.setResourceRoot(process.env.APP_BASENAME);
 
 mix.copyDirectory('resources/images', 'public/images');
-mix.copyDirectory('resources/js/locales', 'public/locales');
 mix.copy('resources/images/favicon.ico', 'public');
+// mix.copyDirectory('resources/js/locales', 'public/locales');
 
 mix.react('resources/js/index.jsx', 'public/js/app.js');
 
@@ -25,6 +26,6 @@ mix.extract();
 
 if (mix.config.production) {
   mix.version();
+} else {
+  mix.disableNotifications();
 }
-
-// mix.dump();

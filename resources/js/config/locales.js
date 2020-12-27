@@ -1,5 +1,5 @@
 const locales = {
-  fallbackLanguage: ['it'],
+  fallbackLanguages: ['it'],
   availableLanguages: ['it', 'en'],
 };
 

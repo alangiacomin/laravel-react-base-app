@@ -9,7 +9,7 @@
 // import 'regenerator-runtime/runtime';
 
 import 'core-js/stable';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import 'regenerator-runtime/runtime';
 import App from './components/App';
@@ -25,8 +25,5 @@ const store = configureAppStore();
 
 store.dispatch(setUserProfile(window.user));
 
-const Loader = () => (
-  <div>loading...</div>
-);
-
-render(<Suspense fallback={<Loader />}><App store={store} /></Suspense>, document.getElementById('app'));
+render(<App store={store} />, document.getElementById('app'));
+// render(<Suspense fallback={null}><App store={store} /></Suspense>, document.getElementById('app'));

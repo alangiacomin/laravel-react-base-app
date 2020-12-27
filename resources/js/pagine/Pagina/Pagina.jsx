@@ -3,6 +3,7 @@ import {
 } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { redirectLogin, renderUnauthorized } from '../../common/renderHelpers';
@@ -22,13 +23,14 @@ const isRouteAllowed = (user, location, protectedRoutes) => {
 const Pagina = (props) => {
   const { user } = props;
   const location = useLocation();
+  const { t } = useTranslation('pagina');
   if (!isRouteAllowed(user, location, [routes.pagina_edit])) {
     return user.id ? renderUnauthorized() : redirectLogin(location.pathname);
   }
   setDocumentTitle('Pagina');
-  const sottotitolo = 'Qui Sottotitolo';
-  const titolo = 'QUI TITOLO';
-  const contenuti = 'Altri contenuti';
+  const sottotitolo = t('subtitle');
+  const titolo = t('title');
+  const contenuti = t('content');
   return (
     <PaginaComponent
       sottotitolo={sottotitolo}
