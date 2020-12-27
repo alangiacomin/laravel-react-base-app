@@ -18,7 +18,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     // backend: {
-    //   loadPath: absoluteUrl('/locales/{{lng}}/{{ns}}.json'),
+    // loadPath: absoluteUrl('/locales/{{lng}}/{{ns}}.json'),
     //   queryStringParams: { v: '1.0' },
     // },
     resources: {
@@ -34,14 +34,14 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    // react: {
-    //   // bindI18n: 'languageChanged',
-    //   // bindI18nStore: '',
-    //   // transEmptyNodeValue: '',
-    //   // transSupportBasicHtmlNodes: true,
-    //   // transKeepBasicHtmlNodesFor: ['br', 'strong', 'i'],
-    //   useSuspense: false,
-    // },
+    react: {
+      // bindI18n: 'languageChanged',
+      // bindI18nStore: '',
+      // transEmptyNodeValue: '',
+      // transSupportBasicHtmlNodes: true,
+      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'em', 'b'],
+      useSuspense: false,
+    },
   });
 
 export default i18n;

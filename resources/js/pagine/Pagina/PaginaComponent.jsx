@@ -1,6 +1,7 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
+import React from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
+import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import { LayoutType } from '../../components/Layout/Layout';
@@ -16,10 +17,10 @@ const PaginaComponent = (props) => {
           <h4>{sottotitolo}</h4>
           <h1>
             {titolo}
-            <Image className="float-right" src="https://via.placeholder.com/300" />
+            <Image className="float-right" src="https://via.placeholder.com/300" width="300px" height="300px" />
           </h1>
           <p>{!editMode
-            ? contenuti
+            ? <Trans>{contenuti}</Trans>
             : <><input type="text" defaultValue={contenuti} /><br /><Link to="/pagina">Indietro</Link></>}
           </p>
           {!editMode && canEdit && <p><Link to="/pagina/edit">Modifica dati</Link></p>}
@@ -34,7 +35,7 @@ const PaginaComponent = (props) => {
 PaginaComponent.propTypes = {
   sottotitolo: PropTypes.string.isRequired,
   titolo: PropTypes.string.isRequired,
-  contenuti: PropTypes.string.isRequired,
+  contenuti: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   canEdit: PropTypes.bool,
   editMode: PropTypes.bool,
 };
