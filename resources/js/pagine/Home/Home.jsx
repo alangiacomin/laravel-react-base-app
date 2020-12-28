@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { setDocumentTitle } from '../../common/utility';
-import HomeComponent from './HomeComponent';
+import Layout from '../../components/Layout';
+import { LayoutType } from '../../components/Layout/Layout';
+// import HomeComponent from './HomeComponent';
+
+const HomeComponent = lazy(() => import('./HomeComponent'));
 
 const Home = (props) => {
   setDocumentTitle();
   const { t } = useTranslation('home');
-  return (<HomeComponent testo={t('home_testo')} />);
+  return (
+    <Layout type={LayoutType.TopFooter}>
+      <Container>
+        <Suspense fallback={null}>
+          <HomeComponent testo={t('home_testo')} />
+        </Suspense>
+      </Container>
+    </Layout>
+  );
 };
 
 // const mapStateToProps = (state) => ({

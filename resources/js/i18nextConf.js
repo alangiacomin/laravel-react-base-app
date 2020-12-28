@@ -1,14 +1,17 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
+import { hot } from 'react-hot-loader/root';
 import { initReactI18next } from 'react-i18next';
+import { absoluteUrl } from './common/utility';
 import locales from './config/locales';
-import en from './locales/en';
-import it from './locales/it';
+// import en from './locales/en';
+// import it from './locales/it';
 
 i18n
   // load translation using http -> see /public/locales
   // learn more: https://github.com/i18next/i18next-http-backend
-  // .use(Backend) // import Backend from 'i18next-http-backend';
+  .use(Backend) // import Backend from 'i18next-http-backend';
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -17,14 +20,14 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    // backend: {
-    // loadPath: absoluteUrl('/locales/{{lng}}/{{ns}}.json'),
-    //   queryStringParams: { v: '1.0' },
-    // },
-    resources: {
-      it,
-      en,
+    backend: {
+      loadPath: absoluteUrl('/locales/{{lng}}/{{ns}}.json'),
+      queryStringParams: { v: '1.0' },
     },
+    // resources: {
+    //   it,
+    //   en,
+    // },
     debug: false,
     fallbackLng: locales.fallbackLanguages || ['en'], // fallback language
     detection: {
@@ -40,8 +43,8 @@ i18n
       // transEmptyNodeValue: '',
       // transSupportBasicHtmlNodes: true,
       transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'em', 'b'],
-      useSuspense: false,
+      useSuspense: true,
     },
   });
 
-export default i18n;
+export default hot(i18n);

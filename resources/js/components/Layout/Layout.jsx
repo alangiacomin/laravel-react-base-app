@@ -1,8 +1,9 @@
 import { values } from 'lodash';
 import { PropTypes } from 'prop-types';
-import React from 'react';
-import LayoutOneColumn from './LayoutOneColumn';
-import LayoutTopFooter from './LayoutTopFooter';
+import React, { lazy, Suspense } from 'react';
+
+const LayoutOneColumn = lazy(() => import('./LayoutOneColumn'));
+const LayoutTopFooter = lazy(() => import('./LayoutTopFooter'));
 
 export const LayoutType = {
   TopFooter: 'TopFooter',
@@ -11,11 +12,18 @@ export const LayoutType = {
 
 const Layout = (props) => {
   const { type, children } = props;
-  switch (type) {
-    case LayoutType.TopFooter: return (<LayoutTopFooter>{children}</LayoutTopFooter>);
-    case LayoutType.OneColumn: return (<LayoutOneColumn>{children}</LayoutOneColumn>);
-    default: return null;
-  }
+  return (
+    <Suspense fallback={null}>
+      {{
+        [LayoutType.TopFooter]: (
+          <LayoutTopFooter>{children}</LayoutTopFooter>
+        ),
+        [LayoutType.OneColumn]: (
+          <LayoutOneColumn>{children}</LayoutOneColumn>
+        ),
+      }[type]}
+    </Suspense>
+  );
 };
 
 Layout.propTypes = {

@@ -1,17 +1,22 @@
-import routes from './routes';
-import LoginPage from '../pagine/Login';
+// import LogoutPage from '../user/LogoutPage';
+import { lazy } from 'react';
+import withSuspense from '../hoc/withSuspense';
 import LogoutPage from '../user/LogoutPage';
-import Pagina from '../pagine/Pagina';
-import Home from '../pagine/Home';
+import routes from './routes';
+
+// import Pagina from '../pagine/Pagina';
+// const Pagina = lazy(() => import('../pagine/Pagina'));
 
 const routesWithComponents = {
   home: {
     ...routes.home,
-    component: Home,
+    component: withSuspense(lazy(() => import('../pagine/Home'))),
+    // component: import('../pagine/Home'),
+    // component: Home,
   },
   login: {
     ...routes.login,
-    component: LoginPage,
+    component: withSuspense(lazy(() => import('../pagine/Login'))),
   },
   logout: {
     ...routes.logout,
@@ -19,11 +24,12 @@ const routesWithComponents = {
   },
   pagina: {
     ...routes.pagina,
-    component: Pagina,
+    component: withSuspense(lazy(() => import('../pagine/Pagina'))),
+    // component: Pagina,
   },
   editor: {
     ...routes.editor,
-    component: Home,
+    component: withSuspense(lazy(() => import('../pagine/Home'))),
   },
 };
 

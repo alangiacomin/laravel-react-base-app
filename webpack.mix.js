@@ -14,18 +14,29 @@ const mix = require('laravel-mix');
 
 mix.setResourceRoot(process.env.APP_BASENAME);
 
-mix.copyDirectory('resources/images', 'public/images');
-mix.copy('resources/images/favicon.ico', 'public');
-// mix.copyDirectory('resources/js/locales', 'public/locales');
+mix.webpackConfig({
+  output: {
+    publicPath: process.env.APP_BASENAME,
+    chunkFilename: 'js/app/[id].js?id=[chunkhash]',
+  },
+});
 
-mix.react('resources/js/index.jsx', 'public/js/app.js');
+mix.copyDirectory('resources/images', 'public/images');
+mix.copy('resources/*', 'public');
+mix.copyDirectory('resources/js/locales', 'public/locales');
+
+mix.js('resources/js/index.jsx', 'public/js/app.js').react();
 
 mix.sass('resources/sass/app.scss', 'public/css');
 
 mix.extract();
 
-if (mix.config.production) {
+mix.disableNotifications();
+// mix.disableSuccessNotifications();
+
+if (mix.inProduction()) {
   mix.version();
-} else {
-  mix.disableNotifications();
+  // mix.sourceMaps();
 }
+
+// mix.dump();

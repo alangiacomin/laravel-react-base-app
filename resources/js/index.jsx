@@ -8,6 +8,9 @@
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
 
+// https://fontawesome.com/how-to-use/on-the-web/using-with/react
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import 'core-js/stable';
 import React from 'react';
 import { render } from 'react-dom';
@@ -16,6 +19,8 @@ import App from './components/App';
 import configureAppStore from './configureStore';
 import './i18nextConf';
 import { setUserProfile } from './user/UserActions';
+
+library.add(fab);
 
 window.axios = require('axios');
 
@@ -26,4 +31,4 @@ const store = configureAppStore();
 store.dispatch(setUserProfile(window.user));
 
 render(<App store={store} />, document.getElementById('app'));
-// render(<Suspense fallback={null}><App store={store} /></Suspense>, document.getElementById('app'));
+// render(<Suspense fallback={<div>Loading...</div>}><App store={store} /></Suspense>, document.getElementById('app'));

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { bindActionCreators } from '@reduxjs/toolkit';
+import { PropTypes } from 'prop-types';
+import React, { lazy, Suspense, useState } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup'; // for everything
 import { useHistory, useLocation } from 'react-router-dom';
-import LoginComponent from './LoginComponent';
-import { userLogin } from '../../user/UserActions';
+import * as Yup from 'yup'; // for everything
 import { setDocumentTitle } from '../../common/utility';
+import Layout from '../../components/Layout';
+import { LayoutType } from '../../components/Layout/Layout';
+import { userLogin } from '../../user/UserActions';
+
+const LoginComponent = lazy(() => import('./LoginComponent'));
 
 const Login = (props) => {
   setDocumentTitle();
@@ -41,12 +44,16 @@ const Login = (props) => {
   };
 
   return (
-    <LoginComponent
-      errorMessage={errorMessage}
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    />
+    <Layout type={LayoutType.OneColumn}>
+      <Suspense fallback={null}>
+        <LoginComponent
+          errorMessage={errorMessage}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        />
+      </Suspense>
+    </Layout>
   );
 };
 

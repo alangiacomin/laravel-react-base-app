@@ -1,7 +1,8 @@
 import { values } from 'lodash';
 import { PropTypes } from 'prop-types';
-import React from 'react';
-import LanguageSelectorButtons from './LanguageSelectorButtons';
+import React, { lazy, Suspense } from 'react';
+
+const LanguageSelectorButtons = lazy(() => import('./LanguageSelectorButtons'));
 
 export const LanguageSelectorType = {
   Buttons: 'Buttons',
@@ -10,7 +11,7 @@ export const LanguageSelectorType = {
 const LanguageSelector = (props) => {
   const { type } = props;
   switch (type) {
-    case LanguageSelectorType.Buttons: return (<LanguageSelectorButtons />);
+    case LanguageSelectorType.Buttons: return (<Suspense fallback={null}><LanguageSelectorButtons /></Suspense>);
     default: return null;
   }
 };

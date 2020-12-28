@@ -1,19 +1,18 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import Layout from '../../components/Layout';
-import { LayoutType } from '../../components/Layout/Layout';
+import { Col, Row } from 'react-bootstrap';
 
 const HomeComponent = (props) => {
   const { testo } = props;
   return (
-    <Layout type={LayoutType.TopFooter}>
-      <Container>
-        <Row>
-          <Col>{testo}</Col>
-        </Row>
-      </Container>
-    </Layout>
+    <>
+      <Row>
+        <Col><h1>Il primo sito</h1></Col>
+      </Row>
+      <Row>
+        <Col>{testo}</Col>
+      </Row>
+    </>
   );
 };
 
