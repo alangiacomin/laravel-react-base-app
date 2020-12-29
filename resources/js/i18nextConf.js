@@ -1,7 +1,6 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
-import { hot } from 'react-hot-loader/root';
 import { initReactI18next } from 'react-i18next';
 import { absoluteUrl } from './common/utility';
 import locales from './config/locales';
@@ -47,4 +46,4 @@ i18n
     },
   });
 
-export default hot(i18n);
+export default i18n;

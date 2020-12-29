@@ -7,10 +7,7 @@ const HomeComponent = (props) => {
   return (
     <>
       <Row>
-        <Col><h1>Il primo sito</h1></Col>
-      </Row>
-      <Row>
-        <Col>{testo}</Col>
+        <Col><h1>{testo}</h1></Col>
       </Row>
     </>
   );

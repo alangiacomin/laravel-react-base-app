@@ -1,7 +1,6 @@
 import { ConnectedRouter } from 'connected-react-router';
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { renderNotFound } from '../../common/renderHelpers';
@@ -37,4 +36,4 @@ App.propTypes = {
   store: PropTypes.object.isRequired,
 };
 
-export default hot(App);
+export default App;
