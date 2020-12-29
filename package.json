@@ -2,6 +2,8 @@
   "private": true,
   "scripts": {
     "cleanpublic": "rmdir /S/Q public & mkdir public",
+    "cleandev": "npm run cleanpublic & npm run dev",
+    "cleanwatch": "npm run cleanpublic & npm run watch",
     "dev": "npm run development",
     "prod": "npm run production",
     "development": "mix",
