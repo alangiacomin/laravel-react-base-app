@@ -1,60 +1,66 @@
 {
-    "name": "alangiacomin/laravel-react-base-app",
-    "type": "project",
-    "description": "Base application using Laravel + React",
-    "keywords": [
-        "framework",
-        "laravel",
-        "react"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": "^7.3|^8.0",
-        "laravel/laravel": "^8.5",
-        "laravel/sanctum": "^2.8",
-        "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^9.5",
-        "tcg/voyager": "^1.4"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "autoload": {
-        "files": [
-            "app/helpers.php"
-        ],
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "npm install",
-            "npm run dev"
-        ]
+  "name": "alangiacomin/laravel-react-base-app",
+  "type": "project",
+  "description": "Base application using Laravel + React",
+  "keywords": [
+    "framework",
+    "laravel",
+    "react"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.3|^8.0",
+    "laravel/laravel": "^8.5",
+    "laravel/sanctum": "^2.8",
+    "mockery/mockery": "^1.4",
+    "phpunit/phpunit": "^9.5",
+    "tcg/voyager": "^1.4"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": []
     }
+  },
+  "autoload": {
+    "files": [
+      "app/helpers.php"
+    ],
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi"
+    ],
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "@php -r \"file_exists(basename(realpath('.')) . '.code-workspace') || rename('main.code-workspace', basename(realpath('.')) . '.code-workspace');\""
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate --ansi",
+      "npm install",
+      "npm run dev"
+    ],
+    "post-git-clone": [
+      "@post-root-package-install",
+      "@composer install",
+      "@post-create-project-cmd"
+    ]
+  }
 }
