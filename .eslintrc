@@ -18,7 +18,8 @@
                 "SwitchCase": 1
             }
         ],
-        "linebreak-style": [2, "windows"],
+        "no-multiple-empty-lines": ["error"],
+        "linebreak-style":"off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-fragments": "off",
         "react/jsx-props-no-spreading": "off",
