@@ -22,8 +22,7 @@ const LanguageSelectorButtonsComponent = (props) => {
 };
 
 LanguageSelectorButtonsComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  langs: PropTypes.array.isRequired,
+  langs: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default LanguageSelectorButtonsComponent;

@@ -1,18 +1,14 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { PropTypes } from 'prop-types';
-import React, { lazy, Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import * as Yup from 'yup'; // for everything
-import { setDocumentTitle } from '../../common/utility';
-import Layout from '../../components/Layout';
-import { LayoutType } from '../../components/Layout/Layout';
-import { userLogin } from '../../user/UserActions';
-
-const LoginComponent = lazy(() => import('./LoginComponent'));
+import { userLogin } from '../../actions/UserActions';
+import SuspenseNull from '../Suspense/SuspenseNull';
+import LoginComponent from './LoginComponent';
 
 const Login = (props) => {
-  setDocumentTitle();
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
   const location = useLocation();
@@ -44,16 +40,14 @@ const Login = (props) => {
   };
 
   return (
-    <Layout type={LayoutType.OneColumn}>
-      <Suspense fallback={null}>
-        <LoginComponent
-          errorMessage={errorMessage}
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        />
-      </Suspense>
-    </Layout>
+    <SuspenseNull>
+      <LoginComponent
+        errorMessage={errorMessage}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      />
+    </SuspenseNull>
   );
 };
 
@@ -65,7 +59,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-// userLogin
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   eseguiLogin: userLogin,
 }, dispatch);

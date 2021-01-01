@@ -1,14 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import routes from '../config/routes';
-import Error from '../pagine/Error';
+import ErrorPage from '../pages/ErrorPage';
 
 export function renderUnauthorized() {
-  return <Error errorCode={403} />;
+  return <ErrorPage errorCode={403} />;
 }
 
 export function renderNotFound() {
-  return <Error errorCode={404} />;
+  return <ErrorPage errorCode={404} />;
 }
 
 export function redirectLogin(referrer) {

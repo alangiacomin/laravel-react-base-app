@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // import { createLogger } from 'redux-logger';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { reducer as userReducer } from './user/UserActions';
+import { reducer as userReducer } from './actions/UserActions';
 
 export const history = createBrowserHistory({ basename: process.env.MIX_APP_BASENAME });
 

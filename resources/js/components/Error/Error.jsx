@@ -3,11 +3,10 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { setDocumentTitle } from '../../common/utility';
+import SuspenseNull from '../Suspense/SuspenseNull';
 import ErrorComponent from './ErrorComponent';
 
 const Error = (props) => {
-  setDocumentTitle('Error');
   const { errorCode } = props;
   const { t } = useTranslation();
   const getDescription = (code) => {
@@ -21,10 +20,12 @@ const Error = (props) => {
     }
   };
   return (
-    <ErrorComponent
-      title={upperFirst(t('error'))}
-      descError={getDescription(errorCode)}
-    />
+    <SuspenseNull>
+      <ErrorComponent
+        title={upperFirst(t('error'))}
+        descError={getDescription(errorCode)}
+      />
+    </SuspenseNull>
   );
 };
 

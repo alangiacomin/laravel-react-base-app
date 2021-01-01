@@ -1,89 +1,89 @@
 import { forEach } from 'lodash';
 import { absoluteUrl } from '../common/utility';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import LogoutPage from '../pages/LogoutPage';
+import PaginaPage from '../pages/PaginaPage';
 
-const routes = {};
+const routesConfig = {
+  home: {
+    title: 'Home',
+    to: '/',
+    component: HomePage,
+  },
 
-const addRoute = (data) => {
-  const defaultRoute = {
-    exact: true,
-    isActive: (match) => match !== null,
-    path: data.to,
-  };
-  forEach(data.subRoutes, (v, k) => {
-    routes[data.id + '_' + k] = {
-      ...defaultRoute,
-      ...v,
-      to: data.to + v.to,
-      path: data.to + v.to,
-    };
-  });
-  const route = {
-    ...defaultRoute,
-    ...data,
-  };
-  delete route.subRoutes;
-  routes[data.id] = route;
-};
+  admin: {
+    title: 'Admin',
+    perm: 'browse_admin',
+    to: absoluteUrl('/admin'),
+  },
 
-addRoute({
-  id: 'home',
-  title: 'Home',
-  to: '/',
-  // isActive: (match, location) => {
-  //    return true;
-  //    //return (
-  //    //    match !== null ||
-  //    //    location.pathname.startsWith("/xxx") ||
-  //    //    location.pathname.startsWith("/yyy")
-  //    //);
-  // }
-});
+  login: {
+    title: 'Login',
+    to: '/login',
+    perm: 'special_guests_only',
+    component: LoginPage,
+  },
 
-addRoute({
-  id: 'admin',
-  title: 'Admin',
-  perm: 'browse_admin',
-  to: absoluteUrl('/admin'),
-});
+  logout: {
+    title: 'Logout',
+    to: '/logout',
+    perm: 'special_users_only',
+    component: LogoutPage,
+  },
 
-addRoute({
-  id: 'login',
-  title: 'Login',
-  to: '/login',
-  perm: 'special_guests_only',
-});
-
-addRoute({
-  id: 'logout',
-  title: 'Logout',
-  to: '/logout',
-  perm: 'special_users_only',
-});
-
-addRoute({
-  id: 'pagina',
-  title: 'page',
-  to: '/pagina',
-  exact: false,
-  subRoutes: {
-    edit: {
-      to: '/edit',
-      perm: 'edit_page_data',
+  pagina: {
+    title: 'page',
+    to: '/pagina',
+    exact: false,
+    component: PaginaPage,
+    subRoutes: {
+      edit: {
+        to: '/edit',
+        perm: 'edit_page_data',
+      },
     },
   },
-});
 
-addRoute({
-  id: 'nonesiste',
-  title: 'not_exist',
-  to: '/nonesiste',
-});
+  nonesiste: {
+    title: 'not_exist',
+    to: '/nonesiste',
+  },
 
-addRoute({
-  id: 'editor',
-  title: 'Editor',
-  to: '/editor',
-  perm: 'edit_page_data',
-});
+  editor: {
+    title: 'Editor',
+    to: '/editor',
+    perm: 'edit_page_data',
+  },
+};
 
-export default routes;
+const explodeRoutes = () => {
+  const routes = {};
+  forEach(routesConfig, (value, key) => {
+    const defaultRoute = {
+      exact: true,
+      isActive: (match) => match !== null,
+      path: value.to,
+    };
+    forEach(value.subRoutes, (v, k) => {
+      routes[key + '_' + k] = {
+        id: key + '_' + k,
+        ...defaultRoute,
+        ...v,
+        to: value.to + v.to,
+        path: value.to + v.to,
+      };
+    });
+    const route = {
+      id: key,
+      ...defaultRoute,
+      ...value,
+    };
+    delete route.subRoutes;
+    routes[key] = route;
+  });
+
+  return routes;
+};
+
+export default explodeRoutes();

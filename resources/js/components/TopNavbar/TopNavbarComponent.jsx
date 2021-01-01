@@ -33,10 +33,8 @@ const TopNavbarComponent = (props) => {
 };
 
 TopNavbarComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  linksLeft: PropTypes.array,
-  // eslint-disable-next-line react/forbid-prop-types
-  linksRight: PropTypes.array,
+  linksLeft: PropTypes.arrayOf(PropTypes.object),
+  linksRight: PropTypes.arrayOf(PropTypes.object),
   homeRoute: PropTypes.string.isRequired,
   appName: PropTypes.string.isRequired,
 };

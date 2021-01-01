@@ -50,8 +50,9 @@ const ProtectedRouteComponent = (props) => {
 };
 
 ProtectedRouteComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
   perm: PropTypes.string,
   to: PropTypes.string.isRequired,
   router: PropTypes.shape({

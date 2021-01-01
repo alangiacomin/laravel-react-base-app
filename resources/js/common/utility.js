@@ -1,4 +1,6 @@
-import { find, isArray, isEmpty, join, trimStart } from 'lodash';
+import {
+  find, isArray, isEmpty, join, trimStart,
+} from 'lodash';
 
 export function absoluteUrl(path) {
   return process.env.MIX_APP_URL + '/' + trimStart(path, '/');

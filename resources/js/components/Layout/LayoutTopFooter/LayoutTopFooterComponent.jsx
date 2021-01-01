@@ -1,7 +1,7 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
-import TopNavbar from '../../TopNavbar';
+import React from 'react';
 import Footer from '../../Footer';
+import TopNavbar from '../../TopNavbar';
 
 const LayoutTopFooterComponent = (props) => {
   const { children } = props;

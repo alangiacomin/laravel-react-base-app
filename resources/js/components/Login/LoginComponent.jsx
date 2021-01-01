@@ -5,9 +5,9 @@ import {
   Button, Card, Col, Row,
 } from 'react-bootstrap';
 import * as Yup from 'yup'; // for everything
-import FormikTextField from '../../components/FormikField/FormikTextField';
+import FormikTextField from '../FormikField/FormikTextField';
 
-function LoginComponent(props) {
+const LoginComponent = (props) => {
   const {
     errorMessage, initialValues, validationSchema, onSubmit,
   } = props;
@@ -56,7 +56,7 @@ function LoginComponent(props) {
       </Col>
     </Row>
   );
-}
+};
 
 LoginComponent.propTypes = {
   errorMessage: PropTypes.string,

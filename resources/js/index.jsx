@@ -15,10 +15,10 @@ import 'core-js/stable';
 import React from 'react';
 import { render } from 'react-dom';
 import 'regenerator-runtime/runtime';
+import { setUserProfile } from './actions/UserActions';
 import App from './components/App';
 import configureAppStore from './configureStore';
 import './i18nextConf';
-import { setUserProfile } from './user/UserActions';
 
 library.add(fab);
 
