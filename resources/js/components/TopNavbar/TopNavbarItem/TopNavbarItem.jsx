@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { hasPermission } from '../../../common/utility';
+import { hasPermission } from '../../../utility';
 import TopNavbarItemComponent from './TopNavbarItemComponent';
 
 const TopNavbarItem = (props) => {

@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { makeRequest } from '../common/utility';
+import { makeRequest } from '../utility';
 
 // ACTIONS
 

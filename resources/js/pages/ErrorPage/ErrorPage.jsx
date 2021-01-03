@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
-import { setDocumentTitle } from '../../common/utility';
 import Layout, { LayoutType } from '../../components/Layout/Layout';
 import SuspensePageLoading from '../../components/Suspense/SuspensePageLoading';
+import { setDocumentTitle } from '../../utility';
 
 const Error = lazy(() => import('../../components/Error'));
 

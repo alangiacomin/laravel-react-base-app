@@ -1,9 +1,8 @@
-import { forEach } from 'lodash';
-import { absoluteUrl } from '../common/utility';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import LogoutPage from '../pages/LogoutPage';
 import PaginaPage from '../pages/PaginaPage';
+import { absoluteUrl, explodeRoutes } from '../utility';
 
 const routesConfig = {
   home: {
@@ -32,6 +31,18 @@ const routesConfig = {
     component: LogoutPage,
   },
 
+  birre: {
+    title: 'Elementi',
+    to: '/elementi',
+    component: HomePage,
+  },
+
+  birrificio: {
+    title: 'Elemento',
+    to: '/elemento',
+    component: HomePage,
+  },
+
   pagina: {
     title: 'page',
     to: '/pagina',
@@ -57,33 +68,4 @@ const routesConfig = {
   },
 };
 
-const explodeRoutes = () => {
-  const routes = {};
-  forEach(routesConfig, (value, key) => {
-    const defaultRoute = {
-      exact: true,
-      isActive: (match) => match !== null,
-      path: value.to,
-    };
-    forEach(value.subRoutes, (v, k) => {
-      routes[key + '_' + k] = {
-        id: key + '_' + k,
-        ...defaultRoute,
-        ...v,
-        to: value.to + v.to,
-        path: value.to + v.to,
-      };
-    });
-    const route = {
-      id: key,
-      ...defaultRoute,
-      ...value,
-    };
-    delete route.subRoutes;
-    routes[key] = route;
-  });
-
-  return routes;
-};
-
-export default explodeRoutes();
+export default explodeRoutes(routesConfig);

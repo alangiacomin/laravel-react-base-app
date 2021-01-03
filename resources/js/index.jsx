@@ -11,16 +11,17 @@
 // https://fontawesome.com/how-to-use/on-the-web/using-with/react
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import 'core-js/stable';
 import React from 'react';
 import { render } from 'react-dom';
 import 'regenerator-runtime/runtime';
 import { setUserProfile } from './actions/UserActions';
-import App from './components/App';
+import App from './App';
 import configureAppStore from './configureStore';
 import './i18nextConf';
 
-library.add(fab);
+library.add(fas, fab);
 
 window.axios = require('axios');
 

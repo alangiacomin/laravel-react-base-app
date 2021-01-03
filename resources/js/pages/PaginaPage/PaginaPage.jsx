@@ -1,10 +1,10 @@
 import React, { lazy } from 'react';
-import { setDocumentTitle } from '../../common/utility';
 import Layout from '../../components/Layout';
 import { LayoutType } from '../../components/Layout/Layout';
 import SuspensePageLoading from '../../components/Suspense/SuspensePageLoading';
+import { setDocumentTitle } from '../../utility';
 
-const Pagina = lazy(() => import('../../components/Pagina'));
+const Pagina = lazy(() => import('./Pagina'));
 
 const PaginaPage = (props) => {
   setDocumentTitle('Pagina');

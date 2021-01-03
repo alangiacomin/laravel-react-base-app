@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import LanguageSelector, { LanguageSelectorType } from '../LanguageSelector/LanguageSelector';
+import LanguageSelector, { LanguageSelectorType } from '../../components-ui/LanguageSelector/LanguageSelector';
 import TopNavbarItem from './TopNavbarItem';
 
 const TopNavbarComponent = (props) => {
