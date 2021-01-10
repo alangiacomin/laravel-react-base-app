@@ -1,7 +1,7 @@
-import React from 'react';
+import { absoluteUrl } from '@alangiacomin/js-utils';
 import { PropTypes } from 'prop-types';
+import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { absoluteUrl } from '../../utility';
 
 const ErrorBoundaryComponent = (props) => {
   const { homepageRoute } = props;

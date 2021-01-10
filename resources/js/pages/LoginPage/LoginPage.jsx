@@ -1,19 +1,18 @@
+import { setDocumentTitle } from '@alangiacomin/js-utils';
 import React, { lazy } from 'react';
-import Layout from '../../components/Layout';
-import { LayoutType } from '../../components/Layout/Layout';
+import LayoutOneColumn from '../../components/LayoutOneColumn';
 import SuspensePageLoading from '../../components/Suspense/SuspensePageLoading';
-import { setDocumentTitle } from '../../utility';
 
 const Login = lazy(() => import('./Login'));
 
 const LoginPage = (props) => {
   setDocumentTitle();
   return (
-    <Layout type={LayoutType.OneColumn}>
+    <LayoutOneColumn>
       <SuspensePageLoading>
         <Login {...props} />
       </SuspensePageLoading>
-    </Layout>
+    </LayoutOneColumn>
   );
 };
 

@@ -1,18 +1,18 @@
+import { setDocumentTitle } from '@alangiacomin/js-utils';
 import React, { lazy } from 'react';
-import Layout, { LayoutType } from '../../components/Layout/Layout';
+import LayoutOneColumn from '../../components/LayoutOneColumn';
 import SuspensePageLoading from '../../components/Suspense/SuspensePageLoading';
-import { setDocumentTitle } from '../../utility';
 
 const Error = lazy(() => import('../../components/Error'));
 
 const ErrorPage = (props) => {
   setDocumentTitle();
   return (
-    <Layout type={LayoutType.OneColumn}>
+    <LayoutOneColumn>
       <SuspensePageLoading>
         <Error {...props} />
       </SuspensePageLoading>
-    </Layout>
+    </LayoutOneColumn>
   );
 };
 

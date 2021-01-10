@@ -1,16 +1,18 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 const TopNavbarItemComponent = (props) => {
   const {
     to, exact, isActive, title,
   } = props;
+  const { t } = useTranslation('routes');
   return (
     <>
       {(to || '').startsWith('http') ? (
         <a className="nav-link" href={to}>
-          {title}
+          {t(title)}
         </a>
       ) : (
         <NavLink
@@ -19,7 +21,7 @@ const TopNavbarItemComponent = (props) => {
           exact={exact}
           isActive={isActive}
         >
-          {title}
+          {t(title)}
         </NavLink>
       )}
     </>

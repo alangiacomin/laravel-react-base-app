@@ -1,14 +1,9 @@
-import HomePage from '../pages/HomePage';
-import LoginPage from '../pages/LoginPage';
-import LogoutPage from '../pages/LogoutPage';
-import PaginaPage from '../pages/PaginaPage';
-import { absoluteUrl, explodeRoutes } from '../utility';
+import { absoluteUrl, explodeRoutes } from '@alangiacomin/js-utils';
 
 const routesConfig = {
   home: {
     title: 'Home',
     to: '/',
-    component: HomePage,
   },
 
   admin: {
@@ -21,33 +16,18 @@ const routesConfig = {
     title: 'Login',
     to: '/login',
     perm: 'special_guests_only',
-    component: LoginPage,
   },
 
   logout: {
     title: 'Logout',
     to: '/logout',
     perm: 'special_users_only',
-    component: LogoutPage,
-  },
-
-  birre: {
-    title: 'Elementi',
-    to: '/elementi',
-    component: HomePage,
-  },
-
-  birrificio: {
-    title: 'Elemento',
-    to: '/elemento',
-    component: HomePage,
   },
 
   pagina: {
     title: 'page',
     to: '/pagina',
     exact: false,
-    component: PaginaPage,
     subRoutes: {
       edit: {
         to: '/edit',
@@ -68,4 +48,6 @@ const routesConfig = {
   },
 };
 
-export default explodeRoutes(routesConfig);
+const routes = explodeRoutes(routesConfig);
+
+export default routes;

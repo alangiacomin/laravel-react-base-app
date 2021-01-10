@@ -1,3 +1,4 @@
+import { hasPermission, isRouteAllowed } from '@alangiacomin/js-utils';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 import { redirectLogin, renderUnauthorized } from '../../../common/renderHelpers';
 import SuspenseNull from '../../../components/Suspense/SuspenseNull';
 import routes from '../../../config/routes';
-import { hasPermission, isRouteAllowed } from '../../../utility';
 import PaginaComponent from './PaginaComponent';
 
 const Pagina = (props) => {

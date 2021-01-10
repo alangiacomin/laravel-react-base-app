@@ -4,11 +4,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { renderNotFound } from './common/renderHelpers';
-import routes from './config/routes';
-import { history } from './configureStore';
+import ScrollToTop from './components/ScrollToTop';
 import ErrorBoundary from './components/ErrorBoundary';
 import ProtectedRoute from './components/ProtectedRoute';
-import ScrollToTop from './components-ui/ScrollToTop';
+import routesWithComponents from './config/routesWithComponents';
+import { history } from './configureStore';
 
 const App = (props) => {
   const { store } = props;
@@ -18,7 +18,7 @@ const App = (props) => {
         <ScrollToTop />
         <Switch>
           {Object
-            .entries(routes)
+            .entries(routesWithComponents)
             .map(([key, route]) => (route.component ? <ProtectedRoute key={key} {...route} /> : null))}
           <ErrorBoundary>
             <Route path="*">

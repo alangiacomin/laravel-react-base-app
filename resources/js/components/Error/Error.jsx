@@ -1,8 +1,8 @@
+import { upperFirst } from '@alangiacomin/js-utils';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { upperFirst } from '../../utility';
 import SuspenseNull from '../Suspense/SuspenseNull';
 import ErrorComponent from './ErrorComponent';
 

@@ -1,22 +1,21 @@
+import { setDocumentTitle } from '@alangiacomin/js-utils';
 import React, { lazy } from 'react';
 import { Container } from 'react-bootstrap';
-import Layout from '../../components/Layout';
-import { LayoutType } from '../../components/Layout/Layout';
+import LayoutTopFooter from '../../components/LayoutTopFooter';
 import SuspensePageLoading from '../../components/Suspense/SuspensePageLoading';
-import { setDocumentTitle } from '../../utility';
 
 const Home = lazy(() => import('./Home'));
 
 const HomePage = (props) => {
   setDocumentTitle();
   return (
-    <Layout type={LayoutType.TopFooter}>
+    <LayoutTopFooter>
       <Container>
         <SuspensePageLoading>
           <Home {...props} />
         </SuspensePageLoading>
       </Container>
-    </Layout>
+    </LayoutTopFooter>
   );
 };
 

@@ -1,19 +1,18 @@
+import { hasPermission } from '@alangiacomin/js-utils';
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { hasPermission } from '../../../utility';
+import SuspenseNull from '../../Suspense/SuspenseNull';
 import TopNavbarItemComponent from './TopNavbarItemComponent';
 
 const TopNavbarItem = (props) => {
   const { user, route } = props;
-  const { t } = useTranslation('routes');
 
   if (!hasPermission(user, route.perm)) {
     return null;
   }
-  const title = t(route.title);
-  return (<TopNavbarItemComponent {...route} title={title} />);
+
+  return (<SuspenseNull><TopNavbarItemComponent {...route} /></SuspenseNull>);
 };
 
 TopNavbarItem.propTypes = {

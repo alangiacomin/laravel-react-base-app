@@ -5,7 +5,7 @@ import {
   Button, Card, Col, Row,
 } from 'react-bootstrap';
 import * as Yup from 'yup'; // for everything
-import FormikTextField from '../../../components-ui/FormikField/FormikTextField';
+import FormikTextField from '../../../components/FormikField/FormikTextField';
 
 const LoginComponent = (props) => {
   const {

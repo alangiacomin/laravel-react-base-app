@@ -1,5 +1,5 @@
+import { makeRequest } from '@alangiacomin/js-utils';
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { makeRequest } from '../utility';
 
 // ACTIONS
 

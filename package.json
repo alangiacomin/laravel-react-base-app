@@ -46,12 +46,13 @@
     "webpack-bundle-analyzer": "^4.3.0"
   },
   "dependencies": {
+    "@alangiacomin/js-utils": "^1.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@reduxjs/toolkit": "^1.5.0",
-    "axios": "^0.19",
+    "axios": "^0.21",
     "bootstrap": "^4.5.3",
     "connected-react-router": "^6.8.0",
     "core-js": "^3.8.1",
